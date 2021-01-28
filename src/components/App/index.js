@@ -21,10 +21,12 @@ class App extends React.Component {
   // on passe par une propriété de class où on vient stocker une fonction
   // flêchée pour ne pas avoir à lier (bind) le contexte (this) de la classe à la fonction
   addTask = () => {
+    const { taskLabel } = this.state;
+
     const newTask = {
       id: 999,
       done: false,
-      label: 'nouvelle tâche',
+      label: taskLabel,
     };
 
     // lorsqu'on modifie un tableau dans le state
@@ -40,6 +42,7 @@ class App extends React.Component {
 
     this.setState({
       tasks: newTasks,
+      taskLabel: '',
     });
   }
 
