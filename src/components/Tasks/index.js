@@ -1,9 +1,13 @@
 import React from 'react';
-
+import Task from './Task';
 import './style.scss';
 
 const Tasks = () => (
-  <div>Tasks</div>
+  <ul className="tasks">
+    <Task />
+    <Task />
+    <Task />
+  </ul>
 );
 
 export default Tasks;

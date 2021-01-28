@@ -3,7 +3,13 @@ import React from 'react';
 import './style.scss';
 
 const Form = () => (
-  <div>Form</div>
+  <form className="form">
+    <input
+      type="text"
+      placeholder="Ajouter une tâche"
+      className="form__input"
+    />
+  </form>
 );
 
 export default Form;
