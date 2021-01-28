@@ -7,12 +7,14 @@ import Tasks from 'src/components/Tasks';
 // == Import
 import './style.scss';
 
+import tasksData from 'src/data/tasks';
+
 // == Composant
 const App = () => (
   <div className="app">
     <Form />
     <Counter count={1} />
-    <Tasks />
+    <Tasks tasks={tasksData} />
   </div>
 );
 

@@ -1,13 +1,42 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Task from './Task';
 import './style.scss';
 
-const Tasks = () => (
-  <ul className="tasks">
-    <Task />
-    <Task />
-    <Task />
-  </ul>
-);
+const Tasks = ({ tasks }) => {
+  const tasksList = tasks.map((task) => {
+    console.log('object');
+
+    // React.createElement(Task, {...task});
+    return (
+      <Task
+        key={task.id}
+        // id={task.id}
+        // label={task.label}
+        // done={task.done}
+        // ici on vient utiliser le spread operator pour déverser
+        // les propriétés de l'objet task dans les props du composant Task
+        {...task}
+      />
+    );
+  });
+
+  return (
+    <ul className="tasks">
+      {tasksList}
+    </ul>
+  );
+};
+
+Tasks.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      // label: PropTypes.string.isRequired,
+      // done: PropTypes.bool.isRequired,
+    }),
+  ).isRequired,
+};
 
 export default Tasks;
