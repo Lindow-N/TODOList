@@ -1,0 +1,13 @@
+@use "sass:color";
+
+$color-base: #2e5849;
+$color-input: color.scale($color-base, $lightness: -10%);
+$color-border: color.scale($color-base, $lightness: -20%);
+$color-light: white;
+$color-placeholder: color.alpha($color-light, 0.5);
+$color-task: #eee;
+$color-task-border: #ccc;
+$color-shadow: 0 0 25px rgba(0,0,0,.1);
+$color-shadow-focus: 0 0 25px rgba(0,0,0,.5);
+
+$gutter: 1rem;
