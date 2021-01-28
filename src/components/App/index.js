@@ -7,7 +7,9 @@ import './style.scss';
 // == Composant
 const App = () => (
   <div className="app">
-    App
+    <div>Form</div>
+    <div>Counter</div>
+    <div>Tasks</div>
   </div>
 );
 
