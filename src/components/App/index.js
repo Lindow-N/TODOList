@@ -21,10 +21,16 @@ class App extends React.Component {
   // on passe par une propriété de class où on vient stocker une fonction
   // flêchée pour ne pas avoir à lier (bind) le contexte (this) de la classe à la fonction
   addTask = () => {
-    const { taskLabel } = this.state;
+    const { taskLabel, tasks } = this.state;
+
+    // récupérer les ids des tâches = transformer le tableau de tâche en tableau d'ids
+    const ids = tasks.map((task) => task.id);
+
+    // on va déterminer quel est l'id max
+    const maxId = Math.max(...ids);
 
     const newTask = {
-      id: 999,
+      id: maxId + 1,
       done: false,
       label: taskLabel,
     };
@@ -37,7 +43,6 @@ class App extends React.Component {
 
     // en déclaratif, on ne modifie jamais les données, on repart avec de nouvelles références
     // on parle ici d'IMMUTABILITE
-    const { tasks } = this.state;
     const newTasks = [...tasks, newTask];
 
     this.setState({
