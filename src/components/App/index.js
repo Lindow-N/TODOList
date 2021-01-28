@@ -57,6 +57,34 @@ class App extends React.Component {
     });
   }
 
+  setTaskDone = (taskId) => {
+    const { tasks } = this.state;
+
+    const newTasks = tasks.map((task) => {
+      // ici on teste si la tâche courante a le même id
+      // que celui passer en paramètre
+      if (task.id === taskId) {
+        // A NE PAS FAIRE
+        // task c'est un objet, il faut donc créer une nouvelle référence
+        // task.done = !task.done;
+
+        // il faut créer un nouvel objet pour avoir ue nouvelle référence
+        return {
+          ...task,
+          // on peut déverser les propriétés d'un objet dans un autre
+          // et à la suite, on peut spécifier les propriétés qui changent
+          done: !task.done,
+        };
+      }
+
+      return task;
+    });
+
+    this.setState({
+      tasks: newTasks,
+    });
+  };
+
   render() {
     const { tasks, taskLabel } = this.state;
     const undoneTasksNumber = tasks.filter((task) => !task.done).length;
@@ -69,7 +97,10 @@ class App extends React.Component {
           onChangeInput={this.setTaskLabel}
         />
         <Counter count={undoneTasksNumber} />
-        <Tasks tasks={tasks} />
+        <Tasks
+          tasks={tasks}
+          setTaskDone={this.setTaskDone}
+        />
       </div>
     );
   }

@@ -8,7 +8,6 @@ const Form = ({ onSubmitForm, inputValue, onChangeInput }) => {
     // comme en vanilla il faut arrêter le comportement par défaut
     // du formulaire
     event.preventDefault();
-    console.log('je soumet le formulaire');
     onSubmitForm();
 
     // ici on aurait pu récupérer la valeur de l'input event.target[0].value
@@ -17,7 +16,6 @@ const Form = ({ onSubmitForm, inputValue, onChangeInput }) => {
   };
 
   const handleOnChange = (event) => {
-    console.log('je passe dans handleOnChange', event.target.value);
     onChangeInput(event.target.value);
   };
 
