@@ -10,13 +10,17 @@ import './style.scss';
 import tasksData from 'src/data/tasks';
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <Form />
-    <Counter count={1} />
-    <Tasks tasks={tasksData} />
-  </div>
-);
+const App = () => {
+  const undoneTasksNumber = tasksData.filter((task) => !task.done).length;
+
+  return (
+    <div className="app">
+      <Form />
+      <Counter count={undoneTasksNumber} />
+      <Tasks tasks={tasksData} />
+    </div>
+  );
+};
 
 // == Export
 export default App;
