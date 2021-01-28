@@ -11,7 +11,7 @@ import './style.scss';
 const App = () => (
   <div className="app">
     <Form />
-    <Counter />
+    <Counter count={1} />
     <Tasks />
   </div>
 );
