@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Form = ({ onSubmitForm }) => {
+const Form = ({ onSubmitForm, inputValue }) => {
   const handleOnSubmit = (event) => {
     // comme en vanilla il faut arrêter le comportement par défaut
     // du formulaire
@@ -18,6 +18,7 @@ const Form = ({ onSubmitForm }) => {
         type="text"
         placeholder="Ajouter une tâche"
         className="form__input"
+        value={inputValue}
       />
     </form>
   );
@@ -25,6 +26,7 @@ const Form = ({ onSubmitForm }) => {
 
 Form.propTypes = {
   onSubmitForm: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
 };
 
 export default Form;
