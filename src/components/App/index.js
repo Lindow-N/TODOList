@@ -89,6 +89,17 @@ class App extends React.Component {
     const { tasks, taskLabel } = this.state;
     const undoneTasksNumber = tasks.filter((task) => !task.done).length;
 
+    const undoneTasks = tasks.filter((task) => !task.done);
+    const doneTasks = tasks.filter((task) => task.done);
+
+    const sortedTasks = [...undoneTasks, ...doneTasks];
+
+    // const sortedTasks = [...tasks];
+    // // true - false === 1
+    // // false - true === -1
+    // // true - true === 0
+    // sortedTasks.sort((a, b) => a.done - b.done);
+
     return (
       <div className="app">
         <Form
@@ -98,7 +109,7 @@ class App extends React.Component {
         />
         <Counter count={undoneTasksNumber} />
         <Tasks
-          tasks={tasks}
+          tasks={sortedTasks}
           setTaskDone={this.setTaskDone}
         />
       </div>
