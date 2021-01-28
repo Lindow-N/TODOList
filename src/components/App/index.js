@@ -1,5 +1,8 @@
 // == Import npm
 import React from 'react';
+import Form from 'src/components/Form';
+import Counter from 'src/components/Counter';
+import Tasks from 'src/components/Tasks';
 
 // == Import
 import './style.scss';
@@ -7,9 +10,9 @@ import './style.scss';
 // == Composant
 const App = () => (
   <div className="app">
-    <div>Form</div>
-    <div>Counter</div>
-    <div>Tasks</div>
+    <Form />
+    <Counter />
+    <Tasks />
   </div>
 );
 
