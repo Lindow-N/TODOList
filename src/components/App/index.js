@@ -15,7 +15,7 @@ class App extends React.Component {
   // on a babel-class-properties
   state = {
     tasks: tasksData,
-    taskLabel: 'Test task label',
+    taskLabel: '',
   }
 
   // on passe par une propriété de class où on vient stocker une fonction
@@ -43,6 +43,12 @@ class App extends React.Component {
     });
   }
 
+  setTaskLabel = (value) => {
+    this.setState({
+      taskLabel: value,
+    });
+  }
+
   render() {
     const { tasks, taskLabel } = this.state;
     const undoneTasksNumber = tasks.filter((task) => !task.done).length;
@@ -52,6 +58,7 @@ class App extends React.Component {
         <Form
           onSubmitForm={this.addTask}
           inputValue={taskLabel}
+          onChangeInput={this.setTaskLabel}
         />
         <Counter count={undoneTasksNumber} />
         <Tasks tasks={tasks} />
