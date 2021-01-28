@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-const Form = ({ onSubmitForm, inputValue, onChangeInput }) => {
-  const handleOnSubmit = (event) => {
+class Form extends React.Component {
+  handleOnSubmit = (event) => {
+    // les props dans une classe deviennent partie du contexte
+    // il faut bien mettre this.props
+    // on peut donc destructurer les props comme le state
+    const { onSubmitForm } = this.props;
+
     // comme en vanilla il faut arrêter le comportement par défaut
     // du formulaire
     event.preventDefault();
@@ -15,22 +20,29 @@ const Form = ({ onSubmitForm, inputValue, onChangeInput }) => {
     // le formulaire
   };
 
-  const handleOnChange = (event) => {
+  handleOnChange = (event) => {
+    const { onChangeInput } = this.props;
+
     onChangeInput(event.target.value);
   };
 
-  return (
-    <form onSubmit={handleOnSubmit} className="form">
-      <input
-        type="text"
-        placeholder="Ajouter une tâche"
-        className="form__input"
-        value={inputValue}
-        onChange={handleOnChange}
-      />
-    </form>
-  );
-};
+  render() {
+    const { inputValue } = this.props;
+
+    return (
+      <form onSubmit={this.handleOnSubmit} className="form">
+        <input
+          type="text"
+          placeholder="Ajouter une tâche"
+          className="form__input"
+          value={inputValue}
+          onChange={this.handleOnChange}
+          // autoFocus
+        />
+      </form>
+    );
+  }
+}
 
 Form.propTypes = {
   onSubmitForm: PropTypes.func.isRequired,
